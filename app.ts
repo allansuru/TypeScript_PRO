@@ -1,30 +1,31 @@
-const person = {
-    name: 'Allan Passos',
-    age: 32
+interface Person {
+    name: string;
+    age: number;
 }
 
-type  Person = typeof person;
-type PersonKeys = keyof Person;
-type PersonTypes = Person[PersonKeys];
-
-// function getProperty(obj: object, key: string) {
-//     return obj[key];
+// interface ReadonlyPerson {
+//     readonly name: string;
+//     readonly age: number;
 // }
 
-// Generic
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
-    return obj[key];
+const person: Person = {
+    name: 'Allan',
+    age: 33
 }
 
-const personName = getProperty(person, 'name');
-
-console.log(personName);
-
-
-
-const anotherPerson =  {
-    name: 'Toddy Motto',
-    age: 27
+type MyReadOnly<T> = {
+    readonly [P in keyof T]: T[P]
 }
 
-console.log(typeof person);
+function freeze<T>(obj: T): Readonly<T> { // MyReadOnly
+    return Object.freeze(obj);
+}
+
+
+
+
+const newPerson = freeze(person);
+
+
+console.log(newPerson);
+
