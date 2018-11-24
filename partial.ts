@@ -8,7 +8,7 @@ type MyPartial<T> = {
 }
 
 
-function updatePerson(person: PersonP, prop: Partial<PersPersonPon>) {
+function updatePerson(person: PersonP, prop: Partial<PersonP>) {
     return { ...person, ...prop}
 }
 
@@ -18,6 +18,6 @@ const personP: PersonP = {
 }
 
 
-const upp = updatePerson(person, { name: 'ABC' });
+const upp = updatePerson(personP, { name: 'ABC' });
 
 console.log('Person: ', upp);

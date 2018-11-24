@@ -3,7 +3,7 @@ const person2 = {
     age: 32
 }
 
-type  Person2 = typeof person;
+type  Person2 = typeof person2;
 type PersonKeys = keyof Person;
 type PersonTypes = Person[PersonKeys];
 
@@ -16,7 +16,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
     return obj[key];
 }
 
-const personName = getProperty(person, 'name');
+const personName = getProperty(person2, 'name');
 
 console.log(personName);
 
@@ -27,4 +27,4 @@ const anotherPerson =  {
     age: 27
 }
 
-console.log(typeof person);
+console.log(typeof person2);
