@@ -1,32 +1,44 @@
-class Foo {
-    bar() {}
+interface Order {
+    id: string;
+    amount: number;
+    currency: string;
 }
 
-const bar = new Foo();
-
-// console.log(bar instanceof Foo);
-// console.log(Object.getPrototypeOf(bar) === Foo.prototype);
-
-class Song2 {
-    constructor(public title: string, duration: number) {}
+interface Stripe {
+    card: string;
+    cvc: string;
 }
 
-class Playlist {
-    constructor(public name: string, public songs: Song2[]){}
+interface PayPal {
+    email: string;
 }
 
-function getItemName(item: Song2 | Playlist) {
-        if (item instanceof Song2) {
-            return  item.title // Song2
-        }
-        return item.songs;
+type CheckoutCard = Order & Stripe;
+type CheckoutPayPal = Order & PayPal;
+type CheckoutABC = Order & { name: string };
+
+const order: Order = {
+    id: 'xy12a',
+    amount: 100,
+    currency: 'USD'
+};
+
+const orderCard: CheckoutCard = {
+    card: '1000 2000 3000 4000',
+    cvc: '123',
+    ...order
 }
 
-const songName = getItemName(new Song2('GodPlan', 30000));
-console.log('songName: ', songName);
+const orderPayPal: CheckoutPayPal = {
+    ...order,
+    email: 'allansuru@hotmail.com'
+}
 
-const playListNames = getItemName(
-    new Playlist('The Best Songs', [new Song2('GodPlans', 300000), new Song2('Passageiro', 30000)])
-)
+const otherOrder: CheckoutABC = {
+    ...order,
+    name: 'Ronaldinho'
+}
 
-console.log('PlayList: ', playListNames);
+const assigned = Object.assign({}, order, orderCard);
+
+console.log('Assigned: ', assigned);
