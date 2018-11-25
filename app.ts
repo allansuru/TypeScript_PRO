@@ -1,65 +1,21 @@
-interface Order {
-    id: string;
-    amount: number;
-    currency: string;
+interface Item {
+    name: string;
 }
 
-interface Stripe {
-    type: 'stripe';
-    card: string;
-    cvc: string;
+interface Artist extends Item {
+    songs: number;
 }
 
-interface PayPal {
-    type: 'paypal';
-    email: string;
+interface Artist {
+    getSongs(): number;
 }
 
-type CheckoutCard = Order & Stripe;
-type CheckoutPayPal = Order & PayPal;
-type CheckoutABC = Order & { name: string };
+type Artist2 = { name: string } & Item;
 
-const order: Order = {
-    id: 'xy12a',
-    amount: 100,
-    currency: 'USD'
-};
-
-const orderCard: CheckoutCard = {
-    type: 'stripe',
-    card: '1000 2000 3000 4000',
-    cvc: '123',
-    ...order
-}
-
-const orderPayPal: CheckoutPayPal = {
-    type: "paypal",
-    ...order,
-    email: 'allansuru@hotmail.com',
-}
-
-const otherOrder: CheckoutABC = {
-    ...order,
-    name: 'Ronaldinho'
-}
-
-const assigned = Object.assign({}, order, orderCard);
-
-
-console.log('Assigned: ', assigned);
-
-type Payload = CheckoutCard | CheckoutPayPal;
-
-function checkout(payload: Payload) {
-    if (payload.type === 'stripe') {
-        console.log(payload.card, payload.cvc);
-    } 
-    if (payload.type == 'paypal') {
-        console.log(payload.email);
-        
+const newArtist: Artist = {
+    name: 'ABC',
+    songs: 5,
+    getSongs() {
+        return  this.songs;
     }
 }
-
-const check = checkout(assigned);
-console.log(check);
-
