@@ -4,8 +4,8 @@ const person2 = {
 }
 
 type  Person2 = typeof person2;
-type PersonKeys = keyof Person;
-type PersonTypes = Person[PersonKeys];
+type PersonKeys = keyof Person2;
+type PersonTypes = Person2[PersonKeys];
 
 // function getProperty(obj: object, key: string) {
 //     return obj[key];
