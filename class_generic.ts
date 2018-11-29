@@ -2,6 +2,10 @@ class Pizza {
     constructor(private name: string, private price: number) {}
 }
 
+class Carro {
+    constructor(private name: string, private price: number) {}
+}
+
 class List<T> {
     private list: T[] = [];
 
@@ -14,8 +18,11 @@ class List<T> {
     }
 }
 
-const list = new List<Pizza>();
 
+
+const list = new List<Pizza>();
+const car = new List<Carro>();
+car.addItem(new Carro("Honda", 55000));
 list.addItem(new Pizza("Mussarela", 33));
 
 
@@ -35,3 +42,4 @@ anotherList.addItem(new Coupon('PIZZA25');
 
 console.log('Pizzas: ', pizzas);
 console.log('Generics: ', anotherList);
+console.log('Carro: ', car.getList());
