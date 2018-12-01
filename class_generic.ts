@@ -38,7 +38,7 @@ class Coupon {
 
 
 const anotherList = new List<Coupon>();
-anotherList.addItem(new Coupon('PIZZA25');
+anotherList.addItem(new Coupon('PIZZA25'));
 
 console.log('Pizzas: ', pizzas);
 console.log('Generics: ', anotherList);

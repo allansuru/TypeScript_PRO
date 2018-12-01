@@ -1,6 +1,6 @@
 interface Person {
     name: string;
-    age?: number;
+    age22?: number;
 }
 
 type MyRequired<T> = {
@@ -8,13 +8,13 @@ type MyRequired<T> = {
 }
 
 function printAge(person: Required<Person>) {
-     return `${person.name} is ${person.age}`; 
+     return `${person.name} is ${person.age22}`; 
 }
 
 
-const p: Required<Person> = {
-    name: 'Allan',
-    age: 33
-}
+// const p: Required<Person> = {
+//     name: 'Allan',
+//     age22: 33
+// }
 
-const age = printAge(p);
+//const age = printAge(p);
