@@ -4,7 +4,7 @@ const pizzas2 = [
 
 const mappedPizzas = pizzas2.map((pizza, index) => pizza.name.toUpperCase() );
 
-console.log(mappedPizzas);
+// console.log(mappedPizzas);
 
 const pizza = {
     name: 'Blazing Inferno',
@@ -12,3 +12,11 @@ const pizza = {
 }
 
 console.log(pizza.getName())
+
+// Default Function parameters
+
+function multiply(a, b =25) {
+    return a * b;
+}
+
+console.log(multiply(5))
