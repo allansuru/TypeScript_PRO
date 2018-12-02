@@ -10,4 +10,31 @@ const toppings33 = ['bacon', 'chili'];
 const newToppings = ['pepperoni'];
 const allToppings = [...toppings33, ...newToppings]
 
-console.log('Spread Operator Array: ', allToppings)
+console.log('Spread Operator Array: ', allToppings);
+
+// Destructuring Arrays and Objects
+
+const pizza111 = {
+    name: 'Bacon',
+    toppings: ['bacon']
+}
+
+function newOrder({ name: namePizza, toppings: nameTopping }) {
+  return { namePizza, nameTopping };
+}
+
+const { namePizza } = newOrder(pizza111);
+console.log('My order: ', namePizza);
+
+
+const toppings22 = ['pepperoni', 'bacon', 'chili'];
+
+const [first, second, third] = toppings22;
+
+console.log(first)
+
+function logToppings22([first,second,third]: any ) {
+   return  [first,second,third];
+}
+const logggg = logToppings22(toppings22);
+console.log(logggg)
