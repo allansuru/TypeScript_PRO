@@ -10,8 +10,8 @@ Pizzaa.prototype.addTopping = function addTopping(topping: string) {
 
 //___________________________________________________________________________________________
 
-class Sizes10 {
-    constructor(public sizes: Array<string>) {}
+abstract class Sizes10 {
+    constructor(protected sizes: Array<string>) {}
     // escrever
     set availableSizes(sizes: Array<string>) {
         this.sizes = sizes;
@@ -22,15 +22,15 @@ class Sizes10 {
     }
 }
 
-const sizes10 = new Sizes10(['small', 'medium', 'large']);
+// const sizes10 = new Sizes10(['small', 'medium', 'large']);
 
 // invoke getter;
-console.log('Quais tamanhos: ', sizes10.availableSizes);
+ //console.log('Quais tamanhos: ', sizes10.availableSizes);
 
 // involer setter;
-sizes10.availableSizes =['small', 'medium', 'large', 'veryLarge'];
+ //sizes10.availableSizes =['small', 'medium', 'large', 'veryLarge'];
 
-console.log('Quais tamanhos: ', sizes10.availableSizes);
+// console.log('Quais tamanhos: ', sizes10.availableSizes);
 
 // Class Inheritance (Herança)
 class Pizzaa2 extends Sizes10 {
@@ -40,6 +40,10 @@ class Pizzaa2 extends Sizes10 {
     constructor(readonly name: string, public sizes: Array<string>) {
         // this.name = name;
         super(sizes);
+    }
+
+    public updateSizes(sizes: Array<string>) {
+        this.sizes = sizes;
     }
 
     public addTopping(toppings: string) {
@@ -62,6 +66,7 @@ console.log('Via Prototype: ',p);
 console.log('Via Classe: ', pp)
 console.log('Name pizza da class: ', pp.name);
 console.log(pp.availableSizes);
-pp.availableSizes = ['small', 'very small', 'medium', 'large', 'very large'];
 
+pp.availableSizes = ['small', 'very small', 'medium', 'large', 'very large'];
+// pp.updateSizes(['a']);
 console.log(pp.availableSizes);
