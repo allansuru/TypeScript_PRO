@@ -5,10 +5,11 @@ declare class Sizes10 {
     availableSizes: Array<string>;
 }
 declare const sizes10: Sizes10;
-declare class Pizzaa2 {
+declare class Pizzaa2 extends Sizes10 {
     readonly name: string;
+    sizes: Array<string>;
     private toppings;
-    constructor(name: string);
+    constructor(name: string, sizes: Array<string>);
     addTopping(toppings: string): void;
 }
 declare const p: any;
