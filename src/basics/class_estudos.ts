@@ -10,7 +10,11 @@ Pizzaa.prototype.addTopping = function addTopping(topping: string) {
 
 //___________________________________________________________________________________________
 
-abstract class Sizes10 {
+interface SizeInterface {
+    availableSizes: string[];
+}
+
+abstract class Sizes10 implements SizeInterface {
     constructor(protected sizes: Array<string>) {}
     // escrever
     set availableSizes(sizes: Array<string>) {
@@ -49,6 +53,10 @@ class Pizzaa2 extends Sizes10 {
     public addTopping(toppings: string) {
         this.toppings.push(toppings);
     }
+
+    static allSizes() {
+        return ['1', '2', '3'];
+    }
 }
 
 
@@ -60,7 +68,9 @@ p.addTopping('bacon');
 const pp = new Pizzaa2('Peperoni1', ['small', 'large']);
 pp.addTopping('pepperoni');
 
+const allSizes = Pizzaa2.allSizes();
 
+console.log('All Sizes Static: ',  allSizes)
 
 console.log('Via Prototype: ',p);
 console.log('Via Classe: ', pp)
